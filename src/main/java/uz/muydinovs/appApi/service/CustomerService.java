@@ -27,7 +27,6 @@ public class CustomerService {
     }
 
     public ApiResponse addCustomer(CustomerDto customerDto) {
-        ApiResponse response = new ApiResponse();
         boolean existsByPhoneNumber = customerRepository.existsByPhoneNumber(customerDto.getPhoneNumber());
         if (existsByPhoneNumber) {
             return new ApiResponse("This customer is already exists", false);
@@ -35,7 +34,7 @@ public class CustomerService {
             Customer customer = new Customer();
             customer.setFullName(customerDto.getFullName());
             customer.setPhoneNumber(customerDto.getPhoneNumber());
-            customer.setFullName(customerDto.getFullName());
+            customer.setAddress(customerDto.getAddress());
             customerRepository.save(customer);
             return new ApiResponse("Customer added", true);
         }

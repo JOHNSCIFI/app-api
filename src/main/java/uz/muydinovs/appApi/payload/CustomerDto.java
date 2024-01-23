@@ -3,16 +3,17 @@ package uz.muydinovs.appApi.payload;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.antlr.v4.runtime.misc.NotNull;
+
+import javax.validation.constraints.NotNull;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomerDto {
-    @NotNull
+    @NotNull(message = "Input full name")
     private String fullName;
-    @NotNull
+    @NotNull(message = "Input phone number")
     private String phoneNumber;
-    @NotNull
+    @NotNull(message = "Input address")
     private String address;
 }
